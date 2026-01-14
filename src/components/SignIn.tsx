@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { sign_in } from "../api/Auth";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../provider/UserProvider";
-import styled from "styled-components";
 import axios, { isAxiosError } from "axios";
+import * as S from "../styles/styled";
 
 export default function SignIn() {
   const navigate = useNavigate(); // navigateオブジェクトを作成する
@@ -45,111 +45,50 @@ export default function SignIn() {
   };
 
   return (
-    <SSignInFrame>
-      <SSignInRow>
-        <SSignInLabel>
+    <S.SSignInFrame>
+      <S.SSignInRow>
+        <S.SSignInLabel>
           <label htmlFor="id">ID</label>
-        </SSignInLabel>
+        </S.SSignInLabel>
 
-        <SSignInInput>
+        <S.SSignInInput>
           <input
             id="id"
             value={userId}
             type="text"
             onChange={(evt) => setUserId(evt.target.value)}
           />
-        </SSignInInput>
-      </SSignInRow>
+        </S.SSignInInput>
+      </S.SSignInRow>
 
-      <SSignInRow>
-        <SSignInLabel>
+      <S.SSignInRow>
+        <S.SSignInLabel>
           <label htmlFor="password">Password</label>
-        </SSignInLabel>
+        </S.SSignInLabel>
 
-        <SSignInInput>
+        <S.SSignInInput>
           <input
             id="password"
             value={pass}
             type="text"
             onChange={(evt) => setPass(evt.target.value)}
           />
-        </SSignInInput>
-      </SSignInRow>
+        </S.SSignInInput>
+      </S.SSignInRow>
 
-      <SSignInRow>
-        <SLoginButton type="button" onClick={onSignInClick}>
+      <S.SSignInRow>
+        <S.SLoginButton type="button" onClick={onSignInClick}>
           Login
-        </SLoginButton>
-      </SSignInRow>
+        </S.SLoginButton>
+      </S.SSignInRow>
 
-      <NewaccountLink
+      <S.NewaccountLink
         onClick={() => {
           navigate("/createaccount");
         }}
       >
         新規登録はこちら
-      </NewaccountLink>
-    </SSignInFrame>
+      </S.NewaccountLink>
+    </S.SSignInFrame>
   );
 }
-
-const NewaccountLink = styled.p`
-  font-size: 13px;
-  text-decoration: underline;
-  margin-top: 8px;
-  margin-bottom: 3px;
-`;
-
-const SSignInFrame = styled.div`
-  background-color: #f8f8f8;
-
-  margin: 80px;
-
-  padding-top: 8px;
-
-  padding-bottom: 8px;
-
-  border-radius: 8px;
-
-  box-shadow: 0 8px 8px #aaaaaa;
-`;
-
-const SSignInRow = styled.div`
-  dixplay: inline-block;
-
-  margin-top: 4px;
-
-  margin-bottom: 4px;
-`;
-
-const SSignInLabel = styled.span`
-  display: inline-block;
-
-  width: 25%;
-
-  vertical-align: top;
-
-  text-align: right;
-
-  margin-right: 4px;
-`;
-
-const SSignInInput = styled.span`
-  display: inline-block;
-
-  width: auto;
-
-  vertical-align: top;
-
-  margin-left: 4px;
-`;
-
-const SLoginButton = styled.button`
-  background-color: #444444;
-
-  color: #f0f0f0;
-
-  padding: 4px 16px;
-
-  border-radius: 8px;
-`;
