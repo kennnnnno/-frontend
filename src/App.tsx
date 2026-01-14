@@ -3,7 +3,7 @@ import "./App.css";
 import SignIn from "./components/SignIn";
 import Main from "./pages/Main";
 import { UserProvider } from "./provider/UserProvider";
-import { Createaacount } from "./pages/Createaccount";
+import { CreateAccountpage } from "./pages/Createaccount";
 import { Infom } from "./pages/Info";
 import { UserProfileProvider } from "./provider/UserProfileProvider";
 
@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SignIn />} />
             <Route path="/main" element={<Main />} />
-            <Route path="/createaccount" element={<Createaacount />} />
+            <Route path="/CreateAccount" element={<CreateAccountpage />} />
             <Route path="/main/info" element={<Infom />} />
           </Routes>
         </UserProvider>

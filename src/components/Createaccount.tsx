@@ -3,32 +3,33 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postUser } from "../api/User";
 import axios from "axios";
+import { CURRENTLY_IN_USE_STATUS } from "../errorStatus";
 
-export const Createaccount = () => {
+export const CreateAccount = () => {
   const [userId, setUserId] = useState(""); // ユーザーIDを保持するstate
 
   const [usermail, setUsermail] = useState(""); // パスワードを保持するstate
 
-  const [pass1, setPass1] = useState(""); // パスワードを保持するstate
+  const [settingPassword, setSettingPassword] = useState(""); // パスワードを保持するstate
 
-  const [pass2, setPass2] = useState(""); // パスワードを保持するstate
+  const [confirmSettingPassword, setConfirmSettingPassword] = useState(""); // パスワードを保持するstate
 
   const navigate = useNavigate(); // navigateオブジェクトを作成する
 
   const Create = async () => {
-    if (pass1 != pass2) {
+    if (settingPassword != confirmSettingPassword) {
       window.alert("パスワードが異なっています。");
-    } else if (userId == "" || pass1 == "") {
+    } else if (userId == "" || settingPassword == "") {
       window.alert("IDまたはパスワードが未入力です。");
     } else {
       try {
-        await postUser(userId, pass1, usermail);
+        await postUser(userId, settingPassword, usermail);
         window.alert("ユーザーの登録が完了しました。");
         navigate("/");
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const status = error.response?.status;
-          if (status == 409) {
+          if (status == CURRENTLY_IN_USE_STATUS) {
             window.alert("IDがすでに利用されています。");
           }
         }
@@ -63,9 +64,9 @@ export const Createaccount = () => {
         <SSignInInput>
           <input
             id="password1"
-            value={pass1}
+            value={settingPassword}
             type="text"
-            onChange={(evt) => setPass1(evt.target.value)}
+            onChange={(evt) => setSettingPassword(evt.target.value)}
           />
         </SSignInInput>
       </SSignInRow>
@@ -77,9 +78,9 @@ export const Createaccount = () => {
       <SSignInInput>
         <input
           id="password2"
-          value={pass2}
+          value={confirmSettingPassword}
           type="text"
-          onChange={(evt) => setPass2(evt.target.value)}
+          onChange={(evt) => setConfirmSettingPassword(evt.target.value)}
         />
       </SSignInInput>
 

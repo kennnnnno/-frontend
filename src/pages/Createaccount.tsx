@@ -1,5 +1,5 @@
-import { Createaccount } from "../components/Createaccount";
+import { CreateAccount } from "../components/Createaccount";
 
-export const Createaacount = () => {
-  return <Createaccount />;
+export const CreateAccountpage = () => {
+  return <CreateAccount />;
 };
