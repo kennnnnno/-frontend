@@ -1,7 +1,5 @@
-import { PostList } from "./PostList"
+import { PostList } from "./PostList";
 
 export const Contents = () => {
-    return(
-        <PostList></PostList>
-    )
-}
+  return <PostList></PostList>;
+};

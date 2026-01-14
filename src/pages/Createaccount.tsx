@@ -1,7 +1,5 @@
-import { Createaccount } from "../components/Createaccount"
+import { Createaccount } from "../components/Createaccount";
 
 export const Createaacount = () => {
-    return(
-    <Createaccount/>
-    )
-}
+  return <Createaccount />;
+};
