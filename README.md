@@ -9,7 +9,7 @@ Reactの基本であるコンポーネント化を意識して作成しました
 - **Styled-componentsの活用**: スタイルをコンポーネント単位で管理し、CSSの干渉を防ぐとともに、直感的なスタイリングを行いました。
 
 ##  デモ動画
-https://youtube.com/shorts/1sx3roHZYeU?feature=share
+https://www.youtube.com/watch?v=MVRNGi4tJyc
 
 
 ##  使用した技術
